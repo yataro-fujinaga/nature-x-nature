@@ -1,0 +1,107 @@
+<script setup lang="ts">
+import { useExpressionStore } from '@/stores/expression'
+import { Expression } from '@/types/expression'
+import { computed, ref } from '@vue/reactivity'
+
+const resultIsLoading = ref(false)
+const resultExp = ref({} as Expression)
+
+const expression1 = computed(() => {
+  const expressionStore = useExpressionStore()
+
+  const expression = expressionStore.expression1
+
+  if (!expression) return {} as Expression
+
+  return expression
+})
+
+const expression2 = computed(() => {
+  const expressionStore = useExpressionStore()
+
+  const expression = expressionStore.expression2
+
+  if (!expression) return {} as Expression
+
+  return expression
+})
+
+const sleep = (milSec: number) =>
+  new Promise((resolve) => setTimeout(resolve, milSec))
+
+const generateExp = async () => {
+  resultIsLoading.value = true
+
+  await sleep(5000)
+
+  resultIsLoading.value = false
+
+  const expressionStore = useExpressionStore()
+
+  resultExp.value = expressionStore.resultExpression
+}
+</script>
+
+<template>
+  <v-container class="h-50">
+    <v-row class="align-center h-100">
+      <v-col cols="3">
+        <v-card variant="outlined" height="300">
+          <v-card-title>
+            {{ expression1.name }}
+          </v-card-title>
+          <v-card-text class="d-flex align-center">
+            <v-img :src="expression1.image"></v-img>
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <v-col cols="1" class="d-flex align-center">
+        <v-card class="w-100">
+          <v-card-text class="text-center">
+            <v-btn icon="mdi-plus"></v-btn>
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <v-col cols="3">
+        <v-card variant="outlined" height="300">
+          <v-card-title>
+            {{ expression2.name }}
+          </v-card-title>
+          <v-card-text class="d-flex align-center">
+            <v-img :src="expression2.image"></v-img>
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <v-col cols="1" class="d-flex align-center">
+        <v-card class="w-100" @click="generateExp()">
+          <v-card-text class="text-center">
+            <v-btn icon="mdi-equal"></v-btn>
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <v-col cols="4">
+        <v-card variant="outlined" height="400">
+          <div
+            v-if="resultIsLoading"
+            class="d-flex justify-center align-center h-100"
+          >
+            <v-progress-circular
+              indeterminate
+              color="primary"
+              size="200"
+              width="10"
+            ></v-progress-circular>
+          </div>
+          <div v-else>
+            <v-card-title>
+              {{ resultExp.name }}
+            </v-card-title>
+            <v-card-text class="d-flex align-center">
+              <v-img :src="resultExp.image"></v-img>
+            </v-card-text>
+          </div>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
