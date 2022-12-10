@@ -27,29 +27,25 @@ const expInCategory = (category: { id: string; label: string }) => {
 
 const categories = [
   {
-    id: 'flower',
-    label: '花・植物',
-  },
-  {
-    id: 'phenomenon',
-    label: '自然現象',
-  },
-  {
-    id: 'animal',
-    label: '動物',
+    id: 'nature',
+    label: '自然',
   },
   {
     id: 'artifact',
     label: '人工物',
   },
+  {
+    id: 'function',
+    label: '関数',
+  },
 ]
 </script>
 
 <template>
-  <div class="bg-teal">
+  <div class="bg-teal-darken-3">
     <v-container>
       <v-row>
-        <v-tabs v-model="tab" bg-color="teal" :grow="true">
+        <v-tabs v-model="tab" :grow="true">
           <v-tab v-for="category in categories" :value="category.id">{{
             category.label
           }}</v-tab>
@@ -68,10 +64,16 @@ const categories = [
                   <v-col cols="3" v-for="expression in expInCategory(category)">
                     <v-card @click="addExpression(expression)">
                       <v-card-text>
-                        <v-img :src="expression.image"></v-img>
+                        <v-img
+                          :src="expression.image"
+                          width="250"
+                          height="250"
+                        ></v-img>
                       </v-card-text>
                       <v-card-text>
-                        {{ expression.name }}
+                        <span class="font-weight-bold">{{
+                          expression.name
+                        }}</span>
                       </v-card-text>
                     </v-card>
                   </v-col>

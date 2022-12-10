@@ -1,16 +1,22 @@
-# Vue 3 + TypeScript + Vite
+# Nature x Nature
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+2022 年度ディジタルコンテンツ演習で制作した作品です
 
-## Recommended IDE Setup
+## テーマ
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+科学は自然を数式を通して理解しようとする。
 
-## Type Support For `.vue` Imports in TS
+数式同士で演算が成立するなら　
+自然同士であっても演算が成り立つと言えるのではないだろうか。
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+## 遊び方
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+写真を 2 つ選ぶ
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+写真が示す、自然現象やモノを表す数式が合成される
+
+合成された数式に最も近い数式を計算する
+
+その数式が表す自然現象やモノを写真として表示する
+
+---

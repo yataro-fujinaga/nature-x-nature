@@ -30,6 +30,7 @@ export const useExpressionStore = defineStore('expression', {
     refresh() {
       this.expression1 = {} as Expression
       this.expression2 = {} as Expression
+      this.resultExpression = {} as Expression
     },
   },
 })

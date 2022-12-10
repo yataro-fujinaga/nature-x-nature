@@ -12,13 +12,18 @@ const refreshExpression = () => {
   <v-app-bar class="w-100" color="teal-darken-3">
     <v-container>
       <v-row>
-        <v-col>
-          <span class="font-weight-bold">Nature x Nature</span>
+        <v-col class="d-flex align-center">
+          <div>
+            <span class="font-weight-bold">Nature x Nature</span>
+          </div>
         </v-col>
-        <v-spacer></v-spacer>
-        <!-- <v-col class="text-right">
-          <v-btn @click="refreshExpression" icon="mdi-refresh"></v-btn>
-        </v-col> -->
+        <v-col class="text-right">
+          <v-btn
+            @click="refreshExpression"
+            icon="mdi-refresh"
+            color="red-darken-4"
+          ></v-btn>
+        </v-col>
       </v-row>
     </v-container>
   </v-app-bar>

@@ -32,7 +32,7 @@ const sleep = (milSec: number) =>
 const generateExp = async () => {
   resultIsLoading.value = true
 
-  await sleep(5000)
+  await sleep(3000)
 
   resultIsLoading.value = false
 
@@ -46,12 +46,12 @@ const generateExp = async () => {
   <v-container class="h-50">
     <v-row class="align-center h-100">
       <v-col cols="3">
-        <v-card variant="outlined" height="300">
+        <v-card variant="outlined">
           <v-card-title>
             {{ expression1.name }}
           </v-card-title>
           <v-card-text class="d-flex align-center">
-            <v-img :src="expression1.image"></v-img>
+            <v-img :src="expression1.image" width="300" height="300"></v-img>
           </v-card-text>
         </v-card>
       </v-col>
@@ -63,12 +63,12 @@ const generateExp = async () => {
         </v-card>
       </v-col>
       <v-col cols="3">
-        <v-card variant="outlined" height="300">
+        <v-card variant="outlined">
           <v-card-title>
             {{ expression2.name }}
           </v-card-title>
           <v-card-text class="d-flex align-center">
-            <v-img :src="expression2.image"></v-img>
+            <v-img :src="expression2.image" width="300" height="300"></v-img>
           </v-card-text>
         </v-card>
       </v-col>
@@ -80,10 +80,11 @@ const generateExp = async () => {
         </v-card>
       </v-col>
       <v-col cols="4">
-        <v-card variant="outlined" height="400">
+        <v-card variant="outlined">
           <div
             v-if="resultIsLoading"
-            class="d-flex justify-center align-center h-100"
+            class="d-flex justify-center align-center"
+            style="height: 400px"
           >
             <v-progress-circular
               indeterminate
@@ -97,7 +98,7 @@ const generateExp = async () => {
               {{ resultExp.name }}
             </v-card-title>
             <v-card-text class="d-flex align-center">
-              <v-img :src="resultExp.image"></v-img>
+              <v-img :src="resultExp.image" width="400" height="400"></v-img>
             </v-card-text>
           </div>
         </v-card>
