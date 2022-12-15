@@ -61,7 +61,11 @@ const categories = [
             <v-window-item v-for="category in categories" :value="category.id">
               <v-container>
                 <v-row>
-                  <v-col cols="3" v-for="expression in expInCategory(category)">
+                  <v-col
+                    cols="12"
+                    md="3"
+                    v-for="expression in expInCategory(category)"
+                  >
                     <v-card @click="addExpression(expression)">
                       <v-card-text>
                         <v-img

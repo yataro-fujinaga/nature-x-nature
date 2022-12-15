@@ -26,6 +26,12 @@ const expression2 = computed(() => {
   return expression
 })
 
+const canGenerate = computed(() => {
+  if (typeof expression2.value.id !== 'string') return false
+
+  return true
+})
+
 const sleep = (milSec: number) =>
   new Promise((resolve) => setTimeout(resolve, milSec))
 
@@ -43,9 +49,9 @@ const generateExp = async () => {
 </script>
 
 <template>
-  <v-container class="h-50">
+  <v-container>
     <v-row class="align-center h-100">
-      <v-col cols="3">
+      <v-col cols="12" md="3">
         <v-card variant="outlined">
           <v-card-title>
             {{ expression1.name }}
@@ -55,14 +61,14 @@ const generateExp = async () => {
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col cols="1" class="d-flex align-center">
+      <v-col cols="12" md="1" class="d-flex align-center">
         <v-card class="w-100">
           <v-card-text class="text-center">
-            <v-btn icon="mdi-plus"></v-btn>
+            <v-icon icon="mdi-plus"></v-icon>
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col cols="3">
+      <v-col cols="12" md="3">
         <v-card variant="outlined">
           <v-card-title>
             {{ expression2.name }}
@@ -72,14 +78,18 @@ const generateExp = async () => {
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col cols="1" class="d-flex align-center">
-        <v-card class="w-100" @click="generateExp()">
+      <v-col cols="12" md="1" class="d-flex align-center">
+        <v-card
+          class="w-100"
+          @click="generateExp()"
+          :class="canGenerate ? 'bg-orange text-white active' : ''"
+        >
           <v-card-text class="text-center">
-            <v-btn icon="mdi-equal"></v-btn>
+            <v-icon icon="mdi-equal"></v-icon>
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col cols="4">
+      <v-col cols="12" md="4">
         <v-card variant="outlined">
           <div
             v-if="resultIsLoading"
@@ -106,3 +116,9 @@ const generateExp = async () => {
     </v-row>
   </v-container>
 </template>
+
+<style scoped>
+.active {
+  border: 1px solid orange;
+}
+</style>
